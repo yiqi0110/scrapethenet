@@ -1,0 +1,31 @@
+{
+  "name": "scrapethenet",
+  "version": "1.0.0",
+  "description": "use for scraping the net for a site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yiqi0110/scrapethenet.git"
+  },
+  "keywords": [
+    "scrape"
+  ],
+  "author": "Trevor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yiqi0110/scrapethenet/issues"
+  },
+  "homepage": "https://github.com/yiqi0110/scrapethenet#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.3.14",
+    "morgan": "^1.9.1",
+    "npm": "^6.4.1"
+  }
+}
