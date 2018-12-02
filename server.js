@@ -7,11 +7,6 @@ const PORT = process.env.PORT || 3000;
 // Initialize Express
 const app = express();
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-mongoose.connect(MONGODB_URI);
-
-
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
@@ -43,9 +38,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scraper", {
-    useNewUrlParser: true
-});
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI);
 
 const routes = require("./controllers/controller.js");
 
