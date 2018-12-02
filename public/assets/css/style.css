@@ -1,19 +1,44 @@
-li {
-  padding: 5px;
-  margin: 5px;
-  background: #faebd7;
+* {
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.label {
-  font-weight: bold;
+body {
+  background-color: #444444;
 }
 
-.create-update-form {
-  padding: 5px;
-  margin: 5px;
-  background: aqua;
+div.card {
+  margin: 0.5rem 0;
+  background-color: #d8d8d8;
 }
 
-.form-group {
-  margin-bottom: 5px;
+img#footerImage {
+  position: relative;
+  left: 50%;
+}
+
+footer {
+  width: 100%;
+  background-color: #888888;
+}
+
+header {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  color: #007bff;
+  background-color: #888888;
+}
+
+.modal-header {
+  background-color: #555555;
+  color: #999999;
+}
+
+.modal-body {
+  background-color: #333333;
+  color: #999999;
+}
+
+.modal-footer {
+  background-color: #555555;
 }
