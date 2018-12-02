@@ -25,48 +25,6 @@ router.get("/getsAllThings", function (req, res) {
   });
 });
 
-router.post("/api/Articles", function (req, res) {
-  Article.create([
-    "name", "sleepy"
-  ], [
-    req.body.name, req.body.sleepy
-  ], function (result) {
-    // Send back the ID of the new quote
-    res.json({
-      id: result.insertId
-    });
-  });
-});
-
-router.put("/api/Articles/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
-
-  console.log("condition", condition);
-
-  Article.update({
-    sleepy: req.body.sleepy
-  }, condition, function (result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
-
-router.delete("/api/Articles/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
-
-  Article.delete(condition, function (result) {
-    if (result.affectedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
 
 // Routes
 router.get("/", function (req, res) {
@@ -116,9 +74,8 @@ router.get("/", function (req, res) {
 
       // Check if db has entry
       let alreadyHasArt = db.Article.find({});
+      console.log(alreadyHasArt);
 
-      // simplish check for prexisting in db, but requires database to be created
-      if (!alreadyHasArt) {
         db.Article.create(result)
         .then(function(data){
           console.log("NEW DB ENTRY- "+data);
@@ -127,9 +84,6 @@ router.get("/", function (req, res) {
           // If an error occurred, log it
           console.log(err);
         });
-      } else {
-        console.log("ALREADY HAS IN DB");
-      }
     });
   });
 
