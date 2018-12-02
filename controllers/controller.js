@@ -120,6 +120,9 @@ router.get("/", function (req, res) {
       // simplish check for prexisting in db, but requires database to be created
       if (!alreadyHasArt) {
         db.Article.create(result)
+        .then(function(data){
+          console.log("NEW DB ENTRY- "+data);
+        })
         .catch(function (err) {
           // If an error occurred, log it
           console.log(err);
