@@ -11,20 +11,6 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("../models");
 
-// Import the model (Article.js) to use its database functions.
-var Article = require("../models/Article.js");
-
-// Create all our routes and set up logic within those routes where required.
-router.get("/getsAllThings", function (req, res) {
-  Article.all(function (data) {
-    var hbsObject = {
-      Articles: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
-  });
-});
-
 
 // Routes
 router.get("/", function (req, res) {
@@ -106,6 +92,7 @@ router.get("/", function (req, res) {
 
 // Route for grabbing a specific Article by id, populate it with it's note
 router.get("/articles/:id", function (req, res) {
+  console.log("this is the one: "+ req.params.id);
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   db.Article.findOne({
       _id: req.params.id
@@ -125,7 +112,7 @@ router.get("/articles/:id", function (req, res) {
 // Route for saving/updating an Article's associated Note
 router.post("/articles/:id", function (req, res) {
   // Create a new note and pass the req.body to the entry
-  // console.log(req.body);
+  console.log(req.params.id + " this one?");
   db.Note.create(req.body)
     .then(function (dbNote) {
       // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
@@ -141,11 +128,14 @@ router.post("/articles/:id", function (req, res) {
     })
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, send it back to the client
-      res.json(dbArticle);
+      let hbsObject = {
+        note: dbArticle
+      }
+      // res.render("index", hbsObject);
     })
     .catch(function (err) {
       // If an error occurred, send it to the client
-      res.json(err);
+      res.render(err);
     });
 });
 

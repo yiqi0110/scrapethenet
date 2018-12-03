@@ -12,8 +12,14 @@
         <div class="row">
           <div class="col-9">
             <p class="card-text">{{this.preview}}</p>
-            <button type="button" id={{this._id}} class="btn btn-primary" data-toggle="modal" data-target="#modal">Leave
-              a comment</button>
+            <div class="row">
+              <button type="button" id={{this._id}} class="btn btn-dark addComment" data-toggle="modal" data-target="#modal">Leave
+                a comment</button>
+                {{#if note}}
+              <button type="button" id={{this._id}} class="btn btn-dark viewComment" data-toggle="modal" data-target="#modal">View
+                a comment</button>
+                {{/if}}
+            </div>
           </div>
           <div class="col-3">
             <img class="card-img-top" src={{this.image}} alt="Card image cap" width="18rem">
@@ -25,7 +31,8 @@
   {{/each}}
 </div>
 
-<footer><a href="https://github.com/yiqi0110/scrapethenet" target="_blank" rel="noopener noreferrer"><img src="/assets/images/github-mark.png" alt="github" width="75px" id="footerImage"></a></footer>
+<footer><a href="https://github.com/yiqi0110/scrapethenet" target="_blank" rel="noopener noreferrer"><img src="/assets/images/github-mark.png"
+      alt="github" width="75px" id="footerImage"></a></footer>
 
 {{!-- modal --}}
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,9 +49,11 @@
       <div class="modal-footer">
         <div class="input-group mb-3">
           <input id="commentInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        <button type="button" class="commentBtn btn btn-secondary" data-dismiss="modal">Submit Comment</button>
+          <button type="button" class="commentBtn btn btn-secondary" data-dismiss="modal">Submit Comment</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+{{!-- end of comment modal --}}
